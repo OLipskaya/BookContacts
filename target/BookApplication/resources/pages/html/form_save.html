@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit contact</title>
+    <link rel="stylesheet" href="../css/styles.css" type="text/css"/>
+    <link rel="stylesheet" href="../css/bootstrap.css" type="text/css"/>
+    <link href='https://fonts.googleapis.com/css?family=Lato:400' rel='stylesheet' type='text/css'>
+    <script type="text/javascript" src="../js_pages/jquery-2.1.4.js"></script>
+    <script type="text/javascript" src="../js_pages/controller_request.js"></script>
+    <script type="text/javascript" src="../js_pages/handler_form.js"></script>
+    <script type="text/javascript" src="../js_pages/handler_button.js"></script>
+</head>
+<body>
+<br>
+
+<div class="container">
+    <!-- Menu -->
+    <ul class="nav nav-tabs">
+        <li class="active"><a href="form_save.html">Form</a></li>
+    </ul><br>
+
+    <!-- Contact form -->
+    <form name='registration' onsubmit='return validate()'>
+        <span class="label label-warning">All fields must be filled!</span><br><br>
+
+        <!----------------------------------- Base Info ---------------------------------->
+
+        <div class="row">
+            <div class="col-md-4 brd">
+                <span class="label label-danger" id="lname"></span>
+                <div class="input-group">
+                    <span class="input-group-addon">Last Name*</span>
+                    <input type="text" class="form-control" name="lastName" id="last">
+                </div><br>
+                <span class="label label-danger" id="fname"></span>
+                <div class="input-group">
+                    <span class="input-group-addon">First Name*</span>
+                    <input type="text" class="form-control" name="firstName" id="first">
+                </div><br>
+                <span class="label label-danger" id="patr"></span>
+                <div class="input-group">
+                    <span class="input-group-addon">Patronymic*</span>
+                    <input type="text" class="form-control" id="patronymic" name="patronymic">
+                </div><br>
+                <span class="label label-danger" id="date"></span>
+                <div class="input-group">
+                    <span class="input-group-addon">Date of Birth*</span>
+                    <input type="text" class="form-control" id="dateBirth" name="dateBirth">
+                </div>
+            </div>
+        </div><br>
+
+        <!----------------------------------- Phone ---------------------------------->
+
+        <h5><span class="label label-default">Phones</span></h5>
+
+        <div class="row" id="phone_form">
+            <div class="col-md-4 brd-default">
+                <span class="label label-danger" id="phone"></span>
+                <div class="input-group">
+                    <span class="input-group-addon">Number</span>
+                    <input type="text" class="form-control" name="phoneNumber" id="idPhone">
+                </div>
+                <span class="label label-danger" id="viewPhone"></span><br>
+                <label>View</label>
+                <label class="checkbox-inline"><input type="checkbox" name="checkBoxView" value="Working" id="ph1"> Working</label>
+                <label class="checkbox-inline"><input type="checkbox" name="checkBoxView" value="Home" id="ph2"> Home</label>
+                <label class="checkbox-inline"><input type="checkbox" name="checkBoxView" value="Mobile" id="ph3"> Mobile</label>
+                <br><br>
+                <label>Flag</label>
+                <label class="checkbox-inline"><input type="checkbox" name="flagPhone" value="Default" id="phflag"> Default</label>
+            </div>
+        </div><br>
+
+        <!-- not see the new form!
+        <button type="button" class="btn btn-default btn-sm" id="butt_phone" onclick="createPhone()">+ Add Phone</button> -->
+        <!----------------------------------- Address ---------------------------------->
+
+        <h5><span class="label label-default">Addresses</span></h5>
+
+        <div class="row" id="addr_form">
+            <div class="col-md-4 brd-default">
+                <span class="label label-danger" id="addr"></span>
+                <div class="input-group">
+                    <span class="input-group-addon">Address</span>
+                    <input type="text" class="form-control" name="address" id="address">
+                </div>
+            </div>
+        </div><br>
+
+       <!-- <button type="button" class="btn btn-default btn-sm" id="butt_addr" onclick="createAddress()">+ Add Address</button> -->
+        <br>
+
+        <!----------------------------------- Email ---------------------------------->
+
+        <h5><span class="label label-default">Email</span></h5>
+
+        <div class="row" id="form_mail">
+            <div class="col-md-4 brd-default">
+                <span class="label label-danger" id="mail"></span>
+                <div class="input-group">
+                    <span class="input-group-addon">Email</span>
+                    <input type="text" class="form-control" name="email" id="email">
+                </div>
+                <span class="label label-danger" id="mview"></span><br>
+                <label>View</label>
+                <label class="checkbox-inline"><input type="checkbox" name="viewMail" value="Working" id="v1"> Working</label>
+                <label class="checkbox-inline"><input type="checkbox" name="viewMail" value="Home" id="v2"> Home</label>
+                <br><br>
+                <label>Flag</label>
+                <label class="checkbox-inline"><input type="checkbox" name="flagMail" id="emflag"> Default</label>
+            </div>
+        </div><br>
+
+        <!-- not see the new form!
+        <button type="button" class="btn btn-default btn-sm" id="mail_butt" onclick="createMail()">+ Add Email</button><br><br>
+        -->
+
+        <button type="submit" class="btn btn-warning" onclick="save()"><a href="contacts_list.html">Save</a></button>
+        <br><br>
+    </form>
+</div>
+
+<script type="text/javascript" src="../js_pages/handler_error.js"></script>
+<script type="text/javascript">
+    var url = window.location.search.substring(1);
+    var id = url.split('=');
+    var user = getContact(id[1]);
+    fillForm(user);
+</script>
+<script type="text/javascript">
+    function save(){
+        var url = window.location.search.substring(1);
+        var param = url.split('=');
+        var id = param[1];
+        if(validate()){
+            var json = createContact(id);
+            savePost(json);
+        }
+    }
+</script>
+</body>
+</html>

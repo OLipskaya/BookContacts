@@ -1,0 +1,37 @@
+
+.table {
+    table-layout: fixed;
+    width: 100%;
+    font-family: 'Lato', sans-serif;
+}
+
+.name {
+    font-weight: bold;
+    font-size: 14pt;
+}
+
+.name-button {
+    font-size: 12pt;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+th {
+    align: center;
+}
+
+.brd {
+    border: 4px dotted black;
+    background: #fff9b2;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.brd-default {
+    border: 1px double #848484;
+    background: #fefff6;
+    padding: 10px;
+    border-radius: 10px;
+}

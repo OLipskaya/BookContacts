@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Contacts list</title>
+    <link rel="stylesheet" href="../css/styles.css" type="text/css"/>
+    <link rel="stylesheet" href="../css/bootstrap.css" type="text/css"/>
+    <link href='https://fonts.googleapis.com/css?family=Lato:400' rel='stylesheet' type='text/css'>
+    <script type="text/javascript" src="../js_pages/controller_request.js"></script>
+    <script type="text/javascript" src="../js_pages/handler_table.js"></script>
+</head>
+<body>
+<br>
+<div class="container">
+    <!-- Menu -->
+    <ul class="nav nav-tabs" class="name">
+        <li class="active"><a href="contacts_list.html">Contacts</a></li>
+        <li><a href="review_list.html">Review</a></li>
+    </ul><br>
+    <!-- Table -->
+    <table class="table table-bordered" id="contacts">
+        <tr class="name">
+            <th>№</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Patronymic</th>
+            <th>Phone</th>
+            <th>Address</th>
+            <th>Email</th>
+            <th>Edit</th>
+        </tr>
+    </table><br>
+    <a class="btn btn-primary" href="form_create.html" role="button">Add Contact</a>
+
+    <script type="text/javascript">
+        var answer = getAllContacts();
+        fillTable(answer);
+    </script>
+</div>
+</body>
+</html>
